@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ blog.title }}
+{% endblock %}
+
+{% block body %}
+	<h7>Category:
+		{{ blog.category }}
+	</h7>
+	<h1>{{ blog.title }}</h1>
+	<h3>{{ blog.shortDescription }}</h3>
+	<h5>{{ blog.body }}</h5>
+
+	<img src="{{ asset("/uploads/image/" ~ blog.image) }}" height="300" alt="Immagine non presente" class="rounded mx-auto d-block"/>
+{% endblock %}

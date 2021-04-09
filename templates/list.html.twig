@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<h1>Blogs</h1>
+
+	{% for label, messages in app.flashes %}
+		{% for message in messages %}
+			<div class="alert alert-primary" role="alert">
+				{{ message }}
+			</div>
+		{% endfor %}
+	{% endfor %}
+
+	<table class="table table-bordered">
+		<thead class="thead-light">
+			<tr>
+				<th>Category</th>
+				<th>Title</th>
+				<th>Short description</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for blog in blogs %}
+				<tr>
+					<td>{{ blog.category }}</td>
+					<td>{{ blog.title }}</td>
+					<td>{{ blog.shortDescription }}</td>
+					<td>
+						<a href="{{ path('view', {id: blog.id}) }}" class="btn btn-outline-success">View</a>
+						<a href="{{ path('edit', {id: blog.id}) }}" class="btn btn-outline-info">Edit</a>
+						<a href="{{ path('delete', {id: blog.id}) }}" onclick="return confirm('Sei sicuro?');" class="btn btn-outline-danger">Delete</a>
+
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<a href="{{ path('create') }}" class="btn btn-primary">Create blog</a>
+{% endblock %}
