@@ -48,7 +48,7 @@ class MainController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $blog = $form->getData();
-            $imageFile = $form->get('imageFile')->getData();
+            $imageFile = $form->get('image')->getData();
             if ($imageFile) {
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
@@ -85,8 +85,7 @@ class MainController extends AbstractController
      *
      * @return Response
      */
-    public function editBlog(Blog $blog, Request $request,
-        EntityManagerInterface $entityManager, SluggerInterface $slugger,
+    public function editBlog(Blog $blog, Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger,
         BlogRepository $blogRepository, LoggerInterface $logger)
     {
         $form = $this->createForm(EditBlogType::class, $blog);

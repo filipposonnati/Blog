@@ -5,6 +5,16 @@
 {% endblock %}
 
 {% block body %}
+	<h1>Edit a blog</h1>
+
+	{% for label, messages in app.flashes %}
+		{% for message in messages %}
+			<div class="alert alert-primary" role="alert">
+				{{ message }}
+			</div>
+		{% endfor %}
+	{% endfor %}
+
 	{{ form_start(form) }}
 	<div class="form-group col-md-3">
 
@@ -20,14 +30,11 @@
 
 	<div class="form-group col-md-3">
 
-        <label>{{ form_label(form.short_description) }}</label>
+		<label>{{ form_label(form.short_description) }}</label>
 
+		{{ form_widget(form.short_description, { 'attr': {'class': 'form-control', 'value': blog.getShortDescription()} }) }}
 
-            {{ form_widget(form.short_description, { 'attr': {'class': 'form-control', 'value': blog.shortDescription} }) }}
-
-
-        <small>{{ form_help(form.short_description) }}</small> 
-
+		<small>{{ form_help(form.short_description) }}</small>
 
 		<div class="form-error">
 			{{ form_errors(form.short_description) }}
@@ -51,9 +58,10 @@
 	<div class="form-group col-md-6">
 
 		<label>{{ form_label(form.image) }}</label>
-        <br />
-        <small>L'immagine corrente è: <strong>{{ blog.image }}</strong></small>
-		{{ form_widget(form.image) }}
+		<br/>
+		<small>L'immagine corrente è:
+			{{ blog.image }}</small>
+		{{ form_widget(form.image, { 'attr': {'class': 'form-control-file'} }) }}
 
 		<small>{{ form_help(form.image) }}</small>
 
@@ -62,12 +70,11 @@
 		</div>
 	</div>
 
-	<div class="form-group col-md-6">
+	<div class="form-group col-md-3">
 
 		<label>{{ form_label(form.category) }}</label>
 
-            {{ form_widget(form.category) }}
-
+		{{ form_widget(form.category, { 'attr': {'class': 'form-control'} }) }}
 
 		<small>{{ form_help(form.category) }}</small>
 
@@ -76,7 +83,7 @@
 		</div>
 	</div>
 
-	<div class="col-md-6">
+	<div class="col-md-3">
 		<input type="submit" class="btn btn-primary"/>
 	</div>
 

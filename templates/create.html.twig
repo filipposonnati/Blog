@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Create new blog entry.</h1>
+	<h1>Create a new blog</h1>
 
 	{% for label, messages in app.flashes %}
 		{% for message in messages %}
@@ -36,14 +36,14 @@
 		</div>
 
 		<div class="form-group col-md-3">
-			<label>{{ form_label(form.shortDescription) }}</label>
+			<label>{{ form_label(form.short_description) }}</label>
 
-			{{ form_widget(form.shortDescription, { 'attr': {'class': 'form-control'} }) }}
+			{{ form_widget(form.short_description, { 'attr': {'class': 'form-control'} }) }}
 
-			<small>{{ form_help(form.shortDescription) }}</small>
+			<small>{{ form_help(form.short_description) }}</small>
 
 			<div class="form-error">
-				{{ form_errors(form.shortDescription) }}
+				{{ form_errors(form.short_description) }}
 			</div>
 		</div>
 
@@ -62,22 +62,22 @@
 
 		<div class="form-group col-md-6">
 
-			<label>{{ form_label(form.imageFile) }}</label>
+			<label>{{ form_label(form.image) }}</label>
 
-			{{ form_widget(form.imageFile) }}
+			{{ form_widget(form.image, { 'attr': {'class': 'form-control-file'} }) }}
 
-			<small>{{ form_help(form.imageFile) }}</small>
+			<small>{{ form_help(form.image) }}</small>
 
 			<div class="form-error">
-				{{ form_errors(form.imageFile) }}
+				{{ form_errors(form.image) }}
 			</div>
 		</div>
 
-		<div class="form-group col-md-6">
+		<div class="form-group col-md-3">
 
 			<label>{{ form_label(form.category) }}</label>
 
-			{{ form_widget(form.category) }}
+			{{ form_widget(form.category, { 'attr': {'class': 'form-control'} }) }}
 
 			<small>{{ form_help(form.category) }}</small>
 

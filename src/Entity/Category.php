@@ -12,14 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Category
 {
-    /**
+    /** 
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
     private $id;
 
-    /**
+    /** 
      * @ORM\Column(type="string", length=100)
      */
     private $name;
@@ -49,11 +49,6 @@ class Category
         $this->name = $name;
 
         return $this;
-    }
-
-    public function __toString()
-    {
-        return (string) $this->getName();
     }
 
     /**
